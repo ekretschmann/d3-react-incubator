@@ -11,7 +11,7 @@ const router = express.Router();
 const staticFiles = express.static(path.join(__dirname, '../../client/build'));
 app.use(staticFiles);
 
-router.get('/data', (req, res) => {
+router.get('/random_data', (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     const data = [

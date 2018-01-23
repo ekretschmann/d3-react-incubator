@@ -1,6 +1,6 @@
-export function random_data_1_errored(state = false, action) {
+export function random_data_2_errored(state = false, action) {
     switch (action.type) {
-        case 'RANDOM_DATA_1_HAS_ERRORED':
+        case 'RANDOM_DATA_2_HAS_ERRORED':
             return action;
 
         default:
@@ -8,9 +8,9 @@ export function random_data_1_errored(state = false, action) {
     }
 }
 
-export function random_data_1_loading(state = false, action) {
+export function random_data_2_loading(state = false, action) {
     switch (action.type) {
-        case 'RANDOM_DATA_1_IS_LOADING':
+        case 'RANDOM_DATA_2_IS_LOADING':
             return action;
 
         default:
@@ -18,9 +18,9 @@ export function random_data_1_loading(state = false, action) {
     }
 }
 
-export function random_data_1_updated(state = [], action) {
+export function random_data_2_updated(state = [], action) {
     switch (action.type) {
-        case 'RANDOM_DATA_1_UPDATED':
+        case 'RANDOM_DATA_2_UPDATED':
             return action;
         default:
             return state;

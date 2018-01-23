@@ -2,13 +2,20 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import { connect } from 'react-redux';
 import { poll } from '../_actions/poller';
-import { random_data_1_poll } from '../_actions/random_data_1';
 
 
 class Histogram extends Component {
 
+
     componentDidMount() {
-        this.props.poll(this.props.url, this.props.loadingAction, this.props.errorAction, this.props.updateAction);
+
+        this.props.poll(
+            this.props.url,
+            this.props.loadingAction,
+            this.props.errorAction,
+            this.props.updateAction,
+            this.props.interval
+        );
     }
 
     initHistogram(data) {
@@ -38,6 +45,8 @@ class Histogram extends Component {
 
     render() {
 
+      // console.log(this.props);
+
         if (this.props.errored) {
             return <div className="histogram">Sorry! There was an error loading the data</div>;
         }
@@ -54,20 +63,42 @@ class Histogram extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, params) => {
 
+    let updatedMapping = undefined;
+    let loadingMapping = undefined;
+    let errorMapping = undefined;
+
+    for (let key of Object.keys(state)) {
+        if (state[key].type === params.updateAction().type) {
+            updatedMapping = state[key];
+        }
+    }
+
+    for (let key of Object.keys(state)) {
+        if (state[key].type === params.loadingAction().type) {
+            loadingMapping = state[key].isLoading;
+        }
+    }
+
+    for (let key of Object.keys(state)) {
+        if (state[key].type === params.errorAction().type) {
+
+            errorMapping = state[key].hasErrored;
+        }
+    }
 
     return {
-        updated: state.random_data_1_updated,
-        errored: state.random_data_1_errored,
-        loading: state.random_data_1_loading
+        updated: updatedMapping,
+        errored: errorMapping,
+        loading: loadingMapping
     };
+
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        random_data_1_poll: (url) => dispatch(random_data_1_poll(url)),
-        poll: (url, loading, error, update) => dispatch(poll(url, loading, error, update))
+        poll: (url, loading, error, update, interval) => dispatch(poll(url, loading, error, update, interval))
     };
 };
 
