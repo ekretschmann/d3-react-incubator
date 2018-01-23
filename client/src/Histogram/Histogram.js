@@ -1,30 +1,23 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
 import { connect } from 'react-redux';
-import { fetchData } from '../_actions/histogram';
+import { poll } from '../_actions/poller';
+import { random_data_1_poll } from '../_actions/random_data_1';
 
 
 class Histogram extends Component {
 
     componentDidMount() {
-        //var data = [10, 15, 30, 50, 80, 65, 55, 30, 20, 10, 8]; // <- A
-        //this.initHistogram(data);
-        //console.log(this.refs);
-        //this.props.fetchData('http://5826ed963900d612000138bd.mockapi.io/items');
-
-
-        const fetchData = this.props.fetchData;
-
-        setInterval(function () { // <- L
-            fetchData('http://localhost:3001/data');
-        }, 5000);
+        this.props.poll(this.props.url, this.props.loadingAction, this.props.errorAction, this.props.updateAction);
     }
 
     initHistogram(data) {
+
+
         const g = this.refs.g;
 
 
-        var bars = d3.select(g).selectAll("div.h-bar") // <- C
+        const bars = d3.select(g).selectAll("div.h-bar") // <- C
             .data(data); // Update <- D
 
         bars.enter() // <- E
@@ -45,35 +38,36 @@ class Histogram extends Component {
 
     render() {
 
-        if (this.props.hasErrored) {
+        if (this.props.errored) {
             return <div className="histogram">Sorry! There was an error loading the data</div>;
         }
 
-        if (this.props.isLoading) {
+        if (this.props.loading) {
             return <div className="histogram">Loading…</div>;
         }
 
-        this.initHistogram(this.props.data);
+        if (this.props.updated && this.props.updated.items) {
+            this.initHistogram(this.props.updated.items);
+        }
 
-        return (
-
-            <div ref="g" className="histogram"/>
-        );
+        return <div ref="g" className="histogram"/>;
     }
 }
 
 const mapStateToProps = (state) => {
 
+
     return {
-        data: state.data,
-        hasErrored: state.hasErrored,
-        isLoading: state.isLoading
+        updated: state.random_data_1_updated,
+        errored: state.random_data_1_errored,
+        loading: state.random_data_1_loading
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchData: (url) => dispatch(fetchData(url))
+        random_data_1_poll: (url) => dispatch(random_data_1_poll(url)),
+        poll: (url, loading, error, update) => dispatch(poll(url, loading, error, update))
     };
 };
 
