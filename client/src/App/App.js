@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import LoadDataFromServer from '../LoadDataFromServer';
-import FunctionsAsData from '../FunctionsAsData';
-import DataFilter from '../DataFilter';
-import { random_data_1_loading, random_data_1_errored, random_data_1_updated } from '../_actions/random_data_1'
-import { random_data_2_loading, random_data_2_errored, random_data_2_updated } from '../_actions/random_data_2'
+// import LoadDataFromServer from '../LoadDataFromServer';
+// import FunctionsAsData from '../FunctionsAsData';
+// import DataFilter from '../DataFilter';
+import DataSort from '../DataSort';
+// import { random_data_1_loading, random_data_1_errored, random_data_1_updated } from '../_actions/random_data_1'
+// import { random_data_2_loading, random_data_2_errored, random_data_2_updated } from '../_actions/random_data_2'
 
 import './App.css';
 
@@ -19,12 +20,17 @@ class App extends Component {
 
         <div className='container'>
 
-
-            <h1>Data Filter</h1>
+            <h1>Data Sort</h1>
             <p>Shows integration with Redux</p>
             <Provider store={store}>
-            <DataFilter />
+                <DataSort />
             </Provider>
+
+            {/*<h1>Data Filter</h1>*/}
+            {/*<p>Shows integration with Redux</p>*/}
+            {/*<Provider store={store}>*/}
+            {/*<DataFilter />*/}
+            {/*</Provider>*/}
 
 
             {/*<h1>Loading random data from server at different intervals</h1>*/}
