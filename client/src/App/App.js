@@ -3,7 +3,11 @@ import { Provider } from 'react-redux';
 // import LoadDataFromServer from '../LoadDataFromServer';
 // import FunctionsAsData from '../FunctionsAsData';
 // import DataFilter from '../DataFilter';
-import DataSort from '../DataSort';
+// import DataSort from '../DataSort';
+import CoordinateSystem from '../CoordinateSystem';
+
+
+
 // import { random_data_1_loading, random_data_1_errored, random_data_1_updated } from '../_actions/random_data_1'
 // import { random_data_2_loading, random_data_2_errored, random_data_2_updated } from '../_actions/random_data_2'
 
@@ -20,11 +24,14 @@ class App extends Component {
 
         <div className='container'>
 
-            <h1>Data Sort</h1>
-            <p>Shows integration with Redux</p>
-            <Provider store={store}>
-                <DataSort />
-            </Provider>
+            <div id='xxx'/>
+            <CoordinateSystem/>
+
+            {/*<h1>Data Sort</h1>*/}
+            {/*<p>Shows integration with Redux</p>*/}
+            {/*<Provider store={store}>*/}
+                {/*<DataSort />*/}
+            {/*</Provider>*/}
 
             {/*<h1>Data Filter</h1>*/}
             {/*<p>Shows integration with Redux</p>*/}
