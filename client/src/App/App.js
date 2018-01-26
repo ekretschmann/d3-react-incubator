@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import Histogram from '../Histogram';
+import LoadDataFromServer from '../LoadDataFromServer';
+import FunctionsAsData from '../FunctionsAsData';
 import { random_data_1_loading, random_data_1_errored, random_data_1_updated } from '../_actions/random_data_1'
 import { random_data_2_loading, random_data_2_errored, random_data_2_updated } from '../_actions/random_data_2'
+
+import './App.css';
 
 import configureStore from '../_store/store';
 const store = configureStore();
@@ -13,9 +16,16 @@ class App extends Component {
 
     return (
 
-        <div>
+        <div className='container'>
+
+
+
+
+
+            <h1>Loading random data from server at different intervals</h1>
+            <p>Shows integration with React and Thunk</p>
             <Provider store={store}>
-                <Histogram
+                <LoadDataFromServer
                     url='http://localhost:3001/random_data'
                     loadingAction= { random_data_1_loading }
                     errorAction= { random_data_1_errored }
@@ -25,7 +35,7 @@ class App extends Component {
             </Provider>
 
             <Provider store={store}>
-                <Histogram
+                <LoadDataFromServer
                     url='http://localhost:3001/random_data'
                     loadingAction= { random_data_2_loading }
                     errorAction= { random_data_2_errored }
@@ -33,6 +43,9 @@ class App extends Component {
                     interval='5000'
                 />
             </Provider>
+
+            <h1>Using functions to produce the data for D3</h1>
+            <FunctionsAsData />
         </div>
     );
   }

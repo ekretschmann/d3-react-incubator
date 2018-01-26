@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { poll } from '../_actions/poller';
 
 
-class Histogram extends Component {
+class LoadDataFromServer extends Component {
 
 
     componentDidMount() {
@@ -102,4 +102,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Histogram);
+export default connect(mapStateToProps, mapDispatchToProps)(LoadDataFromServer);
