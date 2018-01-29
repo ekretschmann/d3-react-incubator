@@ -6,7 +6,10 @@ import { Provider } from 'react-redux';
 // import DataSort from '../DataSort';
 // import CoordinateSystem from '../CoordinateSystem';
 //import SlidingBarChart from '../SlidingBarChart';
-import LineGenerator from '../LineGenerator';
+//import LineGenerator from '../LineGenerator';
+//import LineCurve from '../LineGenerator';
+import LineChart from '../Charts';
+import BubbleChart from '../Charts/BubbleChart';
 
 
 
@@ -26,7 +29,10 @@ class App extends Component {
 
         <div className='container'>
 
-            <LineGenerator/>
+            <LineChart />
+            <BubbleChart />
+            {/*<LineCurve/>*/}
+            {/*<LineGenerator/>*/}
             {/*<SlidingBarChart/>*/}
             {/*<CoordinateSystem/>*/}
 

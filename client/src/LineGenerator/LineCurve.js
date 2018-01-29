@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 
 
 
-class LineGenerator extends Component {
+class LineCurve extends Component {
 
     componentDidMount() {
 
@@ -37,7 +37,7 @@ class LineGenerator extends Component {
         svg.attr("height", height)
             .attr("width", width);
         renderAxes(svg);
-        render(d3.curveCardinalOpen);
+        render(d3.curveLinear);
         renderDots(svg);
         function render(mode){
             var line = d3.line()
@@ -108,4 +108,4 @@ class LineGenerator extends Component {
 
 }
 
-export default LineGenerator;
+export default LineCurve;
