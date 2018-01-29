@@ -36,15 +36,18 @@ class SlidingBarChart extends Component {
                 .attr("class", "v-bar")
                 .style("z-index", "0")
                 .style("position", "fixed")
-                .style("top", chartHeight + "px")
+                .style("top", chartHeight + topMargin + "px")
                 .style("left", function(d, i){
                     return barLeft(i+1) + "px"; // <-B
                 })
                 .style("height", "0px") // <-C
                 .append("span");
             // update
+
+            const ease = d3.easeBounce;
             selection
-                .transition().duration(duration) // <-D
+                .transition().duration(duration)
+                .ease(ease)// <-D
                 .style("top", function (d) {
                     return chartHeight - barHeight(d) + topMargin + "px";
                 })
@@ -58,10 +61,15 @@ class SlidingBarChart extends Component {
                 .text(function (d) {return d.value;});
             // exit
             selection.exit()
-                .transition().duration(duration) // <-E
+                .transition().duration(duration)
+                .ease(ease)// <-E
                 .style("left", function(d, i){
                     return barLeft(-1) + leftMargin + "px"; //<-F
                 })
+                .style("top", function (d) {
+                    return chartHeight  + topMargin + "px";
+                })
+                .style("height", '0px')
                 .remove(); // <-G
         }
         function push(data) {
@@ -94,7 +102,7 @@ class SlidingBarChart extends Component {
 
     render() {
         return <div ref="g" className="sliding-bar-chart"/>;
-    }
+    };
 
 }
 
