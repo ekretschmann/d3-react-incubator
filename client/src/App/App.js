@@ -4,7 +4,8 @@ import { Provider } from 'react-redux';
 // import FunctionsAsData from '../FunctionsAsData';
 // import DataFilter from '../DataFilter';
 // import DataSort from '../DataSort';
-import CoordinateSystem from '../CoordinateSystem';
+// import CoordinateSystem from '../CoordinateSystem';
+import SlidingBarChart from '../SlidingBarChart';
 
 
 
@@ -24,8 +25,8 @@ class App extends Component {
 
         <div className='container'>
 
-            <div id='xxx'/>
-            <CoordinateSystem/>
+            <SlidingBarChart/>
+            {/*<CoordinateSystem/>*/}
 
             {/*<h1>Data Sort</h1>*/}
             {/*<p>Shows integration with Redux</p>*/}
