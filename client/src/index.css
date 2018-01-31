@@ -212,3 +212,13 @@ button {
 .histogram {
   padding:5em;
 }
+
+svg {
+  cursor: pointer;
+  width: 100%;
+  height: 800px;
+}
+circle {
+  fill: none;
+  stroke: steelblue;
+}

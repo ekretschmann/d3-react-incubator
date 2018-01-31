@@ -5,11 +5,12 @@ import { Provider } from 'react-redux';
 // import DataFilter from '../DataFilter';
 // import DataSort from '../DataSort';
 // import CoordinateSystem from '../CoordinateSystem';
-//import SlidingBarChart from '../SlidingBarChart';
+import SlidingBarChart from '../SlidingBarChart';
 //import LineGenerator from '../LineGenerator';
 //import LineCurve from '../LineGenerator';
-import LineChart from '../Charts';
+//import LineChart from '../Charts';
 import BubbleChart from '../Charts/BubbleChart';
+//import MouseClicks from '../Interactions/MouseClicks';
 
 
 
@@ -29,11 +30,9 @@ class App extends Component {
 
         <div className='container'>
 
-            <LineChart />
-            <BubbleChart />
             {/*<LineCurve/>*/}
             {/*<LineGenerator/>*/}
-            {/*<SlidingBarChart/>*/}
+            <SlidingBarChart/>
             {/*<CoordinateSystem/>*/}
 
             {/*<h1>Data Sort</h1>*/}
